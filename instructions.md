@@ -24,6 +24,7 @@ When working in this workspace, read these files in order:
 4. `magnific-prompt-engine/README.md` — system overview
 5. `magnific-prompt-engine/CLAUDE.md` — project Claude rules
 6. `magnific-prompt-engine/instructions.md` — build contract
+7. `magnific-prompt-engine/05_ACCEPTANCE_CHECKLIST.md` — system health verification
 
 ## Operating Rule
 
