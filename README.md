@@ -21,10 +21,10 @@ test, review, revise, and approve.
 
 ```mermaid
 flowchart TD
-    A[Product evidence] --> B[input.md]
+    A[Product evidence] --> B[product-runs/product-name/input.md]
     B --> C[Claude Code validates evidence]
     C --> D{Campaign-ready?}
-    D -->|No| E[Fill input.md fields]
+    D -->|No| E[Fill input.md fields in product-runs/]
     E --> C
     D -->|Yes| F[Campaign strategy lock]
     F --> G[Creative direction lock]
@@ -38,14 +38,16 @@ flowchart TD
     K -->|Reject| N[Do not reuse prompt]
 ```
 
+**Commands used:** `/run-product-campaign` handles validation through prompt-pack generation. `/review-output` handles the review step. `/revise-prompt` handles revision prompts.
+
 ## Quick Start
 
 1. Clone the repo and initialize submodules
-2. Open Claude Code at the repo root (not inside a subdirectory)
-3. Run `/run-product-campaign [product-name]`
+2. Open Claude Code in the `magnific-prompt-engine/` directory (not at the repo root — skills live there)
+3. Run `/run-product-campaign [product-name]` — if the folder doesn't exist, Claude Code creates the scaffolding and stops, waiting for your input
 4. Fill `product-runs/[product-name]/input.md` with product evidence
 5. Run `/run-product-campaign [product-name]` again to generate the prompt pack
-6. Manually test prompts in Magnific, review outputs, and save winners
+6. Run `/review-output` to record output reviews. Approved outputs are saved to `selected-prompts.md`.
 
 ## Important Boundary
 

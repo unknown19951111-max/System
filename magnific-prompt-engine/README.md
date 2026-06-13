@@ -69,25 +69,14 @@ to prevent hallucinated ad claims.
 3. `product-runs/[product-name]/review-notes.md` — track review results
 4. `product-runs/[product-name]/selected-prompts.md` — save winning prompts
 
-**Do not edit unless improving the system:**
-- `instructions.md`
-- `CLAUDE.md`
-- `.claude/settings.json`
-- `.claude/skills/`
-- numbered system files
+**Read these to understand the system (do not edit directly):**
+- `instructions.md` — build contract (read-only for normal use)
+- `CLAUDE.md` — project rules (read-only for normal use)
+- `.claude/settings.json` — permission settings (read-only for normal use)
+- `.claude/skills/` — command definitions (read-only for normal use)
+- numbered system files — schema and template definitions (read-only for normal use)
 
-## New User Only Needs This
-
-```
-1. /run-product-campaign [product-name]
-2. product-runs/[product-name]/input.md
-3. product-runs/[product-name]/prompt-pack.md
-4. /review-output product-runs/[product-name]
-5. /revise-prompt product-runs/[product-name] when needed
-6. product-runs/[product-name]/selected-prompts.md
-
-Do not edit system files unless improving the system.
-```
+**To update the system:** use `/update-system` or `/build-system` with an approved plan.
 
 ## Responsibility Split
 
@@ -111,32 +100,6 @@ Do not edit system files unless improving the system.
 | Image | Nano Banana 2 | Copy-paste image prompts |
 | Video | Kling 2.5 | Copy-paste video prompts |
 
-## Example Run
-
-```
-/run-product-campaign ceramic-coffee-mug
-```
-
-Claude Code creates:
-
-```
-product-runs/ceramic-coffee-mug/
-├── input.md
-├── campaign-strategy-lock.md
-├── creative-direction-lock.md
-├── prompt-pack.md
-├── review-notes.md
-└── selected-prompts.md
-```
-
-The user fills `input.md`, then runs:
-
-```
-/run-product-campaign ceramic-coffee-mug
-```
-
-The system generates the campaign strategy, creative direction, and prompt pack.
-
 ## Project Skills
 
 ### Normal User Commands
@@ -159,36 +122,36 @@ The system generates the campaign strategy, creative direction, and prompt pack.
 
 ```
 magnific-prompt-engine/
-├── CLAUDE.md
 ├── README.md
-├── instructions.md
-├── 01_MASTER_PROMPT_ENGINE.md
-├── 02_PRODUCT_INPUT_TEMPLATE.md
-├── 03_OUTPUT_SCHEMA.md
-├── 04_REVIEW_AND_REVISION.md
-├── 05_ACCEPTANCE_CHECKLIST.md
+├── CLAUDE.md
+├── instructions.md              ← Build contract (89 rules)
+├── 01_MASTER_PROMPT_ENGINE.md   ← Runtime sequence
+├── 02_PRODUCT_INPUT_TEMPLATE.md  ← input.md template
+├── 03_OUTPUT_SCHEMA.md           ← prompt-pack.md schema
+├── 04_REVIEW_AND_REVISION.md     ← Review workflow
+├── 05_ACCEPTANCE_CHECKLIST.md    ← Definition of done
 ├── .claude/
 │   ├── settings.json
 │   └── skills/
-│       ├── build-system/SKILL.md
-│       ├── run-product-campaign/SKILL.md
-│       ├── review-output/SKILL.md
-│       ├── revise-prompt/SKILL.md
-│       └── update-system/SKILL.md
-└── product-runs/
-    └── example-product/
-        ├── input.md
-        ├── campaign-strategy-lock.md
-        ├── creative-direction-lock.md
-        ├── prompt-pack.md
-        ├── review-notes.md
-        └── selected-prompts.md
+│       ├── build-system/
+│       ├── run-product-campaign/
+│       ├── review-output/
+│       ├── revise-prompt/
+│       └── update-system/
+├── product-runs/
+│   ├── example-product/          ← Template with placeholders
+│   ├── biona-hypochlorous-spray/ ← Real product (complete)
+│   ├── hallucination-pressure-test/ ← Anti-hallucination test
+│   └── iphone/                   ← Real product (complete)
+├── tests/
+│   └── hallucination-pressure-test.md
+└── graphify-out/                 ← Knowledge graph artifacts
 ```
 
 ## Quickstart: First Product Run
 
-1. Open Claude Code in the repo root
-2. Run `/run-product-campaign [product-name]`
+1. Open Claude Code in the `magnific-prompt-engine/` directory
+2. Run `/run-product-campaign ceramic-coffee-mug` (or your product name)
 3. If the folder does not exist, Claude Code scaffolds it and stops
 4. Paste product evidence into `product-runs/[product-name]/input.md`
 5. Run `/run-product-campaign [product-name]`
@@ -203,12 +166,7 @@ magnific-prompt-engine/
 
 ## How to Paste into Magnific
 
-1. Open Magnific in your browser
-2. Select the correct model lane (Nano Banana 2 or Kling 2.5)
-3. Copy the **Final Copy-Paste Prompt** from `prompt-pack.md`
-4. Paste into Magnific's prompt field
-5. Generate and download the output
-6. Name the output file with the prompt name for tracking
+Open Magnific, select the lane (Nano Banana 2 or Kling 2.5), copy the **Final Copy-Paste Prompt** from `prompt-pack.md`, paste into the prompt field, generate, and name the output file with the prompt name for tracking.
 
 ## Manual Review Loop
 
@@ -250,6 +208,30 @@ Confirm:
 - Manual review is always the final quality gate
 - Claims Registry must be obeyed by every prompt
 
+## Testing
+
+The system includes a hallucination pressure test in:
+
+- `tests/hallucination-pressure-test.md` — test procedure and pass criteria
+- `product-runs/hallucination-pressure-test/` — test run with zero-allowed-claims input
+
+To verify anti-hallucination controls:
+1. Run `/run-product-campaign hallucination-pressure-test`
+2. Review the generated `prompt-pack.md` — it must contain zero invented claims
+3. Check the Claims Registry section — it should list ZERO allowed claims
+
 ## No Guarantees Statement
 
 This system generates prompts for manual copying into Magnific. It does not guarantee Magnific output quality, model behavior, or campaign results. Generated prompts are never equivalent to approved visuals. Manual review is the final quality gate.
+
+## Troubleshooting
+
+| Symptom | Likely Cause | Fix |
+|---|---|---|
+| Command not found | Claude Code is not in `magnific-prompt-engine/` | `cd magnific-prompt-engine/` and retry |
+| "Stop and request missing fields" | `input.md` lacks required fields | Add Product Evidence, Important Restrictions, Output Needed |
+| Skill doesn't activate | Skill file missing or CWD wrong | Check `.claude/skills/` exists in CWD |
+
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for version history.
