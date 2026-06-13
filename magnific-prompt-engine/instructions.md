@@ -2391,7 +2391,7 @@ NOT APPLICABLE
 
 ### Embedded Negative Rule (Overrides Reference)
 
-Every final image and video prompt MUST include an embedded `--neg` directive with 5-10 prioritized terms. The embedded negative in each final prompt is what the user copies into Magnific. The Section 14 reference negatives are supplementary documentation only.
+Every final image and video prompt MUST include an embedded `--neg` directive with 5-10 prioritized terms. The embedded negative in each final prompt is what the user copies into Magnific. The reference negatives (Section 65) are supplementary documentation only.
 
 ### Maximum Negative Token Rule
 
@@ -2977,22 +2977,25 @@ Final approved prompt storage.
 
 ### README.md Must Use This Exact Order
 
-1. Start Here
-2. What this is
-3. What this is not
-4. New user only needs this
-5. Supported lanes
-6. Project skills
-7. Manual vs Automated
-8. Folder structure
-9. Quickstart: First Product Run
-10. Run One Product Campaign command
-11. How to paste into Magnific
-12. Manual Review Loop
-13. How to save selected prompts
-14. How to inspect permissions with `/permissions`
-15. Constraints
-16. No guarantees statement
+1. What This Is
+2. What This Is Not
+3. How the System Works
+4. Input and Output Contract
+5. Accuracy Model
+6. Start Here
+7. New User Only Needs This
+8. Responsibility Split
+9. Supported Lanes
+10. Example Run
+11. Project Skills
+12. Folder Structure
+13. Quickstart: First Product Run
+14. How to Paste into Magnific
+15. Manual Review Loop
+16. How to Save Selected Prompts
+17. How to Inspect Permissions
+18. Constraints
+19. No Guarantees Statement
 
 README must be operational, not marketing copy.
 
@@ -3297,7 +3300,7 @@ disable-model-invocation: true
 
 README.md must include this quickstart flow:
 
-1. Open Claude Code in the repo root
+1. Open Claude Code at the repo root (not inside magnific-prompt-engine/)
 2. Run `/run-product-campaign [product-name]`
 3. If the folder does not exist, Claude Code scaffolds it and stops
 4. Paste product evidence into `product-runs/[product-name]/input.md`
@@ -3313,85 +3316,13 @@ README.md must include this quickstart flow:
 
 ---
 
-## 83. Run One Product Campaign Command Block
+## 83. Run One Product Campaign
 
-README.md must include this copy-paste command block:
+The `/run-product-campaign` skill handles both scaffolding and prompt-pack generation.
 
-```text
-Run one product campaign.
+README.md must reference this skill in the Project Skills table.
 
-Use PRODUCT RUN MODE.
-
-Invoke:
-
-/run-product-campaign [product-name]
-
-State A — product-run folder does not exist:
-
-1. Normalize [product-name] to lowercase kebab-case.
-2. Create product-runs/[product-name]/.
-3. Create required placeholder files:
-   - input.md
-   - campaign-strategy-lock.md
-   - creative-direction-lock.md
-   - prompt-pack.md
-   - review-notes.md
-   - selected-prompts.md
-4. Ask the user to fill input.md.
-5. Stop. Do not generate prompts yet.
-
-State B — product-run folder exists:
-
-1. Read product-runs/[product-name]/input.md.
-2. Validate Product Evidence, Important Restrictions, and Output Needed.
-3. If Product Evidence is empty, placeholder-only, or too vague, stop and show the missing fields.
-4. If validation passes, read:
-   - CLAUDE.md
-   - 01_MASTER_PROMPT_ENGINE.md
-   - 02_PRODUCT_INPUT_TEMPLATE.md
-   - 03_OUTPUT_SCHEMA.md
-   - 04_REVIEW_AND_REVISION.md
-   - product-runs/[product-name]/input.md
-5. Generate:
-   - product-runs/[product-name]/campaign-strategy-lock.md
-   - product-runs/[product-name]/creative-direction-lock.md
-   - product-runs/[product-name]/prompt-pack.md
-
-Do not modify system files.
-
-If target files already exist, preserve approved content and append a new version section instead of overwriting.
-
-Generate product-runs/[product-name]/prompt-pack.md containing, in this exact order:
-
-1. Prompt Pack Metadata
-2. Product Evidence Level
-3. Verified Product Facts
-4. Reasonable Marketing Inferences
-5. Unknown / Do Not Assume
-6. Product Accuracy Lock
-7. Claims Registry
-8. Campaign Strategy Summary
-9. Creative Direction Summary
-10. Campaign Intent Matrix
-11. Technical Visual Direction Layer
-12. Nano Banana 2 Image Prompt Pack
-13. Kling 2.5 Video Prompt Pack
-14. Negative Prompt Pack
-15. Controlled Variation Matrix
-16. Prompt Quality Scorecard
-17. Revision Prompts
-
-Follow:
-- Product Accuracy Lock
-- Claims Registry
-- Campaign Strategy Lock
-- Creative Direction Lock
-- Campaign Intent Matrix
-- Technical Visual Direction Layer
-- Model Optimization Layer (apply to each image and video prompt)
-- Output Schema
-- Review Rules
-```
+Detailed command behavior is documented in the skill's SKILL.md file and the Quickstart section.
 
 ---
 ## 84. Optional CHANGELOG Strategy
@@ -3573,13 +3504,13 @@ Each required file must be:
 - Local Claude Code project skills under `.claude/skills/`
 - `.claude/settings.json` for one protected-file edit guard exists
 - README is operational, not marketing copy
-- README includes exact required order
+- README follows the updated 19-section order
 - README includes Start Here
 - README includes “New user only needs this” box
-- README includes Manual vs Automated table
-- README includes `/permissions` inspection step
+- README includes Responsibility Split table
+- README includes `/permissions` inspection step at section 17
 - README includes Quickstart: First Product Run
-- README includes Run One Product Campaign copy-paste command block
+- README includes Project Skills table referencing /run-product-campaign
 - Manual review remains the final quality gate
 
 ---

@@ -1,5 +1,65 @@
 # Magnific Prompt Engine v6.6.1
 
+## What This Is
+
+A **deterministic workflow and schema-guided prompt-pack builder** for generating campaign-aware, copy-paste-ready prompts for manual use in Magnific.
+
+## What This Is Not
+
+- ❌ NOT an automation tool — you paste prompts manually
+- ❌ NOT a Magnific API — no integration, no Spaces automation
+- ❌ NOT a visual generator — it only creates text prompts
+- ❌ NOT a quality guarantee — Magnific outputs vary; you review them
+
+## How the System Works
+
+```mermaid
+flowchart TD
+    A[User provides product evidence] --> B[product-runs/product-name/input.md]
+    B --> C[Claude Code validates evidence]
+    C --> D{Enough evidence?}
+    D -->|No| E[Stop and request missing fields]
+    D -->|Yes| F[Generate campaign-strategy-lock.md]
+    F --> G[Generate creative-direction-lock.md]
+    G --> H[Generate prompt-pack.md]
+    H --> I[User manually tests prompts in Magnific]
+    I --> J[User records output review]
+    J --> K{Approve, revise, or reject?}
+    K -->|Approve| L[selected-prompts.md]
+    K -->|Revise| M[Revision prompt]
+    M --> H
+    K -->|Reject| N[Do not reuse prompt]
+```
+
+## Input and Output Contract
+
+| Stage | File | Purpose |
+|---|---|---|
+| Input | `input.md` | User-provided product facts, evidence, restrictions, and requested outputs |
+| Strategy | `campaign-strategy-lock.md` | Locked campaign direction generated from verified input |
+| Creative | `creative-direction-lock.md` | Locked visual direction generated from verified input |
+| Prompt Pack | `prompt-pack.md` | Final copy-paste prompts for Magnific |
+| Review | `review-notes.md` | User review of Magnific outputs |
+| Approval | `selected-prompts.md` | Approved winning prompts only |
+
+The system must not invent product facts. Unknown details must remain unknown.
+
+## Accuracy Model
+
+This system separates product information into three categories:
+
+1. **Verified facts** — directly supported by user-provided product evidence.
+   Examples: product type, shape, color, logo placement, visible text.
+2. **Reasonable marketing inferences** — allowed creative interpretation
+   that does not create fake product claims. Examples: likely audience,
+   likely campaign angle, likely visual style.
+3. **Unknowns** — details that must not be presented as factual.
+   Examples: exact material, certifications, price, performance claims,
+   reviews, technical specifications.
+
+Every generated prompt obeys the **Product Accuracy Lock** and **Claims Registry**
+to prevent hallucinated ad claims.
+
 ## Start Here
 
 **Most users only touch:**
@@ -16,17 +76,6 @@
 - `.claude/skills/`
 - numbered system files
 
-## What This Is
-
-A **deterministic workflow and schema-guided prompt-pack builder** for generating campaign-aware, copy-paste-ready prompts for manual use in Magnific.
-
-## What This Is Not
-
-- ❌ NOT an automation tool — you paste prompts manually
-- ❌ NOT a Magnific API — no integration, no Spaces automation
-- ❌ NOT a visual generator — it only creates text prompts
-- ❌ NOT a quality guarantee — Magnific outputs vary; you review them
-
 ## New User Only Needs This
 
 ```
@@ -40,29 +89,11 @@ A **deterministic workflow and schema-guided prompt-pack builder** for generatin
 Do not edit system files unless improving the system.
 ```
 
-## Supported Lanes
+## Responsibility Split
 
-| Lane | Model | Prompt Type |
-|---|---|---|
-| Image | Nano Banana 2 | Copy-paste image prompts |
-| Video | Kling 2.5 | Copy-paste video prompts |
-
-## Project Skills
-
-| Command | Action |
+| Claude Code Handles | User Handles |
 |---|---|
-| `/build-system` | Build or verify the system |
-| `/build-system --check` | Read-only health check |
-| `/run-product-campaign [product-name]` | Generate prompt pack from input |
-| `/review-output product-runs/[product-name]` | Format and track Magnific output reviews |
-| `/revise-prompt product-runs/[product-name]` | Create targeted revision prompts |
-| `/update-system` | Audit or patch system files |
-
-## Manual vs Automated
-
-| Automated by Claude Code | Manual by User |
-|---|---|
-| Product-run folder scaffolding | Product truth/evidence input |
+| Product-run folder scaffolding | Product truth / evidence input |
 | Placeholder file creation | Claim evidence confirmation |
 | Input.md evidence validation | Magnific prompt pasting |
 | Campaign strategy lock generation | Magnific model lane selection |
@@ -72,6 +103,57 @@ Do not edit system files unless improving the system.
 | Selected-prompt saving after user approval | Deciding when to update the system |
 | Build health check | |
 | Protected system file approval prompts | |
+
+## Supported Lanes
+
+| Lane | Model | Prompt Type |
+|---|---|---|
+| Image | Nano Banana 2 | Copy-paste image prompts |
+| Video | Kling 2.5 | Copy-paste video prompts |
+
+## Example Run
+
+```
+/run-product-campaign ceramic-coffee-mug
+```
+
+Claude Code creates:
+
+```
+product-runs/ceramic-coffee-mug/
+├── input.md
+├── campaign-strategy-lock.md
+├── creative-direction-lock.md
+├── prompt-pack.md
+├── review-notes.md
+└── selected-prompts.md
+```
+
+The user fills `input.md`, then runs:
+
+```
+/run-product-campaign ceramic-coffee-mug
+```
+
+The system generates the campaign strategy, creative direction, and prompt pack.
+
+## Project Skills
+
+### Normal User Commands
+
+| Command | Use When |
+|---|---|
+| `/run-product-campaign [product-name]` | Start or generate a product campaign |
+| `/review-output product-runs/[product-name]` | Record Magnific output review |
+| `/revise-prompt product-runs/[product-name]` | Create targeted revision prompts |
+
+### System Maintainer Commands
+
+| Command | Use When |
+|---|---|
+| `/build-system` | Build or verify system structure |
+| `/build-system --check` | Run a read-only system health check |
+| `/update-system` | Audit or patch system files |
 
 ## Folder Structure
 
@@ -118,83 +200,6 @@ magnific-prompt-engine/
 11. Run `/review-output product-runs/[product-name]` after testing outputs
 12. Run `/revise-prompt product-runs/[product-name]` only when a documented failure needs targeted revision
 13. Save winners in `selected-prompts.md` only after user approval
-
-## Run One Product Campaign
-
-```
-Run one product campaign.
-
-Use PRODUCT RUN MODE.
-
-Invoke:
-
-/run-product-campaign [product-name]
-
-State A — product-run folder does not exist:
-
-1. Normalize [product-name] to lowercase kebab-case.
-2. Create product-runs/[product-name]/.
-3. Create required placeholder files:
-   - input.md
-   - campaign-strategy-lock.md
-   - creative-direction-lock.md
-   - prompt-pack.md
-   - review-notes.md
-   - selected-prompts.md
-4. Ask the user to fill input.md.
-5. Stop. Do not generate prompts yet.
-
-State B — product-run folder exists:
-
-1. Read product-runs/[product-name]/input.md.
-2. Validate Product Evidence, Important Restrictions, and Output Needed.
-3. If Product Evidence is empty, placeholder-only, or too vague, stop and show the missing fields.
-4. If validation passes, read:
-   - CLAUDE.md
-   - 01_MASTER_PROMPT_ENGINE.md
-   - 02_PRODUCT_INPUT_TEMPLATE.md
-   - 03_OUTPUT_SCHEMA.md
-   - 04_REVIEW_AND_REVISION.md
-   - product-runs/[product-name]/input.md
-5. Generate:
-   - product-runs/[product-name]/campaign-strategy-lock.md
-   - product-runs/[product-name]/creative-direction-lock.md
-   - product-runs/[product-name]/prompt-pack.md
-
-Do not modify system files.
-
-If target files already exist, preserve approved content and append a new version section instead of overwriting.
-
-Generate product-runs/[product-name]/prompt-pack.md containing, in this exact order:
-
-1. Prompt Pack Metadata
-2. Product Evidence Level
-3. Verified Product Facts
-4. Reasonable Marketing Inferences
-5. Unknown / Do Not Assume
-6. Product Accuracy Lock
-7. Claims Registry
-8. Campaign Strategy Summary
-9. Creative Direction Summary
-10. Campaign Intent Matrix
-11. Technical Visual Direction Layer
-12. Nano Banana 2 Image Prompt Pack
-13. Kling 2.5 Video Prompt Pack
-14. Negative Prompt Pack
-15. Controlled Variation Matrix
-16. Prompt Quality Scorecard
-17. Revision Prompts
-
-Follow:
-- Product Accuracy Lock
-- Claims Registry
-- Campaign Strategy Lock
-- Creative Direction Lock
-- Campaign Intent Matrix
-- Technical Visual Direction Layer
-- Output Schema
-- Review Rules
-```
 
 ## How to Paste into Magnific
 
