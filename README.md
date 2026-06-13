@@ -1,5 +1,9 @@
 # System — Claude Code Prompt Engine Workspace
 
+[![Status](https://img.shields.io/badge/Status-Active-green)](https://github.com/unknown19951111-max/System)
+[![Model](https://img.shields.io/badge/Model-Nano%20Banana%202%20%2B%20Kling%202.5-blue)](https://magnific.com)
+[![Version](https://img.shields.io/badge/Version-6.6.1-orange)](magnific-prompt-engine/CHANGELOG.md)
+
 A workspace for building structured, evidence-controlled product campaign
 prompt packs for manual use in Magnific.
 
@@ -8,6 +12,17 @@ prompt packs for **Nano Banana 2** image prompts and **Kling 2.5** video
 prompts. The system does **not** automate Magnific, call an API, or guarantee
 final visual quality — it creates structured prompt assets that you manually
 test, review, revise, and approve.
+
+## Who This Is For
+
+- **Product marketers** creating campaign visuals in Magnific
+- **Prompt engineers** who want structured, repeatable workflows
+- **Anyone** who needs evidence-controlled prompts instead of free-form prompting
+
+## What It Creates
+
+**Output:** A structured `prompt-pack.md` file with copy-paste-ready image and video prompts.
+You copy these into Magnific manually. The system does not generate images or video.
 
 ## What's Inside
 
@@ -48,19 +63,29 @@ flowchart TD
 
 ## Quick Start
 
-1. Clone the repo and initialize submodules
-2. Open Claude Code in the `magnific-prompt-engine/` directory (not at the repo root — skills live there)
-3. Run `/run-product-campaign [product-name]` — if the folder doesn't exist, Claude Code creates the scaffolding and stops, waiting for your input
-4. Fill `product-runs/[product-name]/input.md` with product evidence
-5. Run `/run-product-campaign [product-name]` again to generate the prompt pack
-6. Run `/review-output product-runs/[product-name]` after testing outputs. Record which visuals you approve, revise, or reject. Approved outputs are saved to `selected-prompts.md`.
-7. (Optional) Run `/revise-prompt product-runs/[product-name]` when a specific prompt needs targeted revision. Document the failure first in review-notes.md.
+1. **Clone and initialize submodules**
+   ```bash
+   git clone https://github.com/unknown19951111-max/System.git
+   cd System
+   git submodule update --init --recursive
+   ```
+2. **Launch Claude Code** in the project directory (skills live there, not at root)
+   ```bash
+   cd magnific-prompt-engine && claude
+   ```
+3. **Run your first campaign**
+   ```bash
+   /run-product-campaign ceramic-coffee-mug
+   ```
+   📝 Product names use **kebab-case**: lowercase letters, hyphens instead of spaces (e.g., `biona-hypochlorous-spray`).
+   
+   ℹ️ **First run behavior:** If the folder doesn't exist, Claude Code creates the scaffolding and **stops**. This is expected — fill in the input file next.
+4. **Fill `product-runs/[product-name]/input.md`** with your product details (name, appearance, packaging, restrictions)
+5. **Run `/run-product-campaign [product-name]` again** to generate the prompt pack
+6. **After testing in Magnific**, run `/review-output product-runs/[product-name]` to record approvals, revisions, or rejections
+7. **Need a fix?** Run `/revise-prompt product-runs/[product-name]` for targeted revisions (document the failure in review-notes.md first)
 
-## Important Boundary
-
-This system creates **text prompts only**. You copy them into Magnific manually.
-It does not generate images, videos, or automated campaigns.
-It does not integrate with Magnific APIs, Spaces, or any automation platform.
+See `magnific-prompt-engine/README.md` for a full list of what this system does and does not do.
 
 ## Submodules
 
