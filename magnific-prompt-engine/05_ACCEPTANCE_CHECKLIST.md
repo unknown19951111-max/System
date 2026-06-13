@@ -176,8 +176,7 @@ Any completion claim must include the verification evidence checked.
 - README is operational, not marketing copy
 - README includes exact required order
 - README includes Start Here
-- README includes "New user only needs this" box
-- README includes Manual vs Automated table
+- README includes Responsibility Split table
 - README includes `/permissions` inspection step
 - README includes Quickstart: First Product Run
 - README includes Run One Product Campaign copy-paste command block

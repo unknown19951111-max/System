@@ -129,7 +129,7 @@ magnific-prompt-engine/
 ├── 02_PRODUCT_INPUT_TEMPLATE.md  ← input.md template
 ├── 03_OUTPUT_SCHEMA.md           ← prompt-pack.md schema
 ├── 04_REVIEW_AND_REVISION.md     ← Review workflow
-├── 05_ACCEPTANCE_CHECKLIST.md    ← Definition of done
+├── 05_ACCEPTANCE_CHECKLIST.md    ← Build acceptance checklist
 ├── .claude/
 │   ├── settings.json
 │   └── skills/
@@ -140,13 +140,15 @@ magnific-prompt-engine/
 │       └── update-system/
 ├── product-runs/
 │   ├── example-product/          ← Template with placeholders
-│   ├── biona-hypochlorous-spray/ ← Real product (complete)
+│   ├── biona-hypochlorous-spray/ ← Real product (all 12 prompts packed; tested in Magnific; winners approved)
 │   ├── hallucination-pressure-test/ ← Anti-hallucination test
-│   └── iphone/                   ← Real product (complete)
+│   └── iphone/                   ← Real product (all 12 prompts packed; tested in Magnific; winners approved)
 ├── tests/
 │   └── hallucination-pressure-test.md
 └── graphify-out/                 ← Knowledge graph artifacts
 ```
+
+*Product runs marked complete have all 12 prompts packed, review-notes.md recording actual Magnific testing and output reviews, and approved winners saved in selected-prompts.md.*
 
 ## Quickstart: First Product Run
 
@@ -175,8 +177,8 @@ For each Magnific output:
 2. Mark **APPROVE**, **REVISE**, or **REJECT**
 3. Select the failure type
 4. Write one sentence explaining the issue
-5. If REVISE, run `/revise-prompt` for a targeted revision
-6. If APPROVE, run `/review-output` to save to selected-prompts.md
+5. If REVISE, run `/revise-prompt product-runs/[product-name]` for a targeted revision
+6. If APPROVE, run `/review-output product-runs/[product-name]` to save to selected-prompts.md
 
 ## How to Save Selected Prompts
 

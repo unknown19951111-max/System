@@ -17,6 +17,12 @@ test, review, revise, and approve.
 | `graphify/` | Codebase graph analysis and visualization (submodule) |
 | `superpowers/` | Claude Code workflow superpowers (submodule) |
 
+| File | Role |
+|---|---|
+| `README.md` | This file — workspace overview |
+| `CLAUDE.md` | Claude Code workspace rules |
+| `instructions.md` | Workspace index and operating law |
+
 ## System Flow
 
 ```mermaid
@@ -38,7 +44,7 @@ flowchart TD
     K -->|Reject| N[Do not reuse prompt]
 ```
 
-**Commands used:** `/run-product-campaign` handles validation through prompt-pack generation. `/review-output` handles the review step. `/revise-prompt` handles revision prompts.
+**Commands used:** `/run-product-campaign [product-name]` handles validation through prompt-pack generation. `/review-output product-runs/[product-name]` handles the review step. `/revise-prompt product-runs/[product-name]` handles revision prompts.
 
 ## Quick Start
 
@@ -47,7 +53,8 @@ flowchart TD
 3. Run `/run-product-campaign [product-name]` — if the folder doesn't exist, Claude Code creates the scaffolding and stops, waiting for your input
 4. Fill `product-runs/[product-name]/input.md` with product evidence
 5. Run `/run-product-campaign [product-name]` again to generate the prompt pack
-6. Run `/review-output` to record output reviews. Approved outputs are saved to `selected-prompts.md`.
+6. Run `/review-output product-runs/[product-name]` after testing outputs. Record which visuals you approve, revise, or reject. Approved outputs are saved to `selected-prompts.md`.
+7. (Optional) Run `/revise-prompt product-runs/[product-name]` when a specific prompt needs targeted revision. Document the failure first in review-notes.md.
 
 ## Important Boundary
 
