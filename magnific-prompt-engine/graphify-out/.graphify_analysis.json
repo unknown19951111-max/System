@@ -1,0 +1,246 @@
+{
+  "communities": {
+    "0": [
+      "biona_campaign_strategy_lock_file",
+      "biona_creative_direction_lock_file",
+      "biona_input_file",
+      "biona_product",
+      "campaign_intent_matrix",
+      "campaign_strategy",
+      "campaign_strategy_summary",
+      "claims_registry",
+      "contract_hierarchy",
+      "creative_direction",
+      "creative_direction_summary",
+      "field_confidence_tags",
+      "manual_review",
+      "master_prompt_engine_file",
+      "output_schema_file",
+      "product_accuracy_lock",
+      "product_evidence_levels",
+      "product_truth",
+      "prompt_quality_scorecard",
+      "runtime_sequence",
+      "technical_visual_direction_layer"
+    ],
+    "1": [
+      "build_system_skill_file",
+      "claude_file",
+      "completion_claim_rule",
+      "instructions_file",
+      "product_input_template_file",
+      "readme_file",
+      "review_output_skill_file",
+      "review_revision_file",
+      "revise_prompt_skill_file",
+      "revision_failure_taxonomy",
+      "run_product_campaign_skill_file",
+      "update_system_skill_file",
+      "visual_claim_safety",
+      "workflow_routing_rule"
+    ],
+    "2": [
+      "biona_hypochlorous_spray_product",
+      "honeydew_labs_brand",
+      "macro_detail_image_asset",
+      "prompt_pack_biona_hypochlorous_spray",
+      "prompt_pack_clean_ecommerce_image",
+      "prompt_pack_kling_2_5",
+      "prompt_pack_lifestyle_use_case_video",
+      "prompt_pack_nano_banana_2",
+      "prompt_pack_product_reveal_video",
+      "prompt_pack_short_social_ad_video",
+      "prompt_pack_ugc_style_product_video",
+      "review_notes_biona_hypochlorous_spray",
+      "selected_prompts_biona_hypochlorous_spray"
+    ],
+    "3": [
+      "all_claims_forbidden",
+      "campaign_strategy_lock",
+      "hallucination_pressure_test",
+      "input",
+      "no_fake_claims_constraint",
+      "no_hands_constraint",
+      "no_invented_brand_name_constraint",
+      "no_people_constraint",
+      "no_people_no_hands_no_faces",
+      "output_requirement",
+      "product_evidence_bottle"
+    ],
+    "4": [
+      "clean_studio_aesthetic",
+      "creative_direction_lock",
+      "gentle_slow_reveal_motion",
+      "neutral_color_palette",
+      "no_props_policy",
+      "product_centered_framing",
+      "soft_studio_lighting"
+    ],
+    "5": [
+      "prompt_pack_campaign_intent_matrix",
+      "prompt_pack_claims_registry",
+      "prompt_pack_macro_detail_image",
+      "prompt_pack_product_accuracy_lock",
+      "prompt_pack_prompt_pack",
+      "prompt_pack_verified_product_facts"
+    ],
+    "6": [
+      "campaign_strategy_lock_example_product",
+      "creative_direction_lock_example_product",
+      "input_example_product",
+      "prompt_pack_example_product",
+      "review_notes_example_product"
+    ],
+    "7": [
+      "prompt_pack_lifestyle_product_image",
+      "prompt_pack_paid_social_ad_base_image",
+      "prompt_pack_premium_cinematic_product_video",
+      "prompt_pack_product_hero_image",
+      "prompt_pack_technical_visual_direction"
+    ],
+    "8": [
+      "hallucination_pressure_test_forbidden_hallucinations",
+      "hallucination_pressure_test_product_evidence",
+      "hallucination_pressure_test_verified_facts"
+    ],
+    "9": [
+      "hallucination_pressure_test_hallucination_pressure_test",
+      "review_notes_review_notes",
+      "selected_prompts_selected_prompts"
+    ],
+    "10": [
+      "hallucination_pressure_test_pass_criteria",
+      "hallucination_pressure_test_test_procedure"
+    ],
+    "11": [
+      "selected_prompts"
+    ]
+  },
+  "cohesion": {
+    "0": 0.12380952380952381,
+    "1": 0.23076923076923078,
+    "2": 0.28205128205128205,
+    "3": 0.2909090909090909,
+    "4": 0.38095238095238093,
+    "5": 0.4666666666666667,
+    "6": 0.6,
+    "7": 0.4,
+    "8": 0.6666666666666666,
+    "9": 0.6666666666666666,
+    "10": 1.0,
+    "11": 1.0
+  },
+  "gods": [
+    {
+      "id": "prompt_pack_prompt_pack",
+      "label": "Prompt Pack",
+      "degree": 18
+    },
+    {
+      "id": "prompt_pack_biona_hypochlorous_spray",
+      "label": "BIONA Hypochlorous Spray Prompt Pack",
+      "degree": 16
+    },
+    {
+      "id": "biona_hypochlorous_spray_product",
+      "label": "BIONA Pure Hypochlorous Acid Spray 0.018%",
+      "degree": 14
+    },
+    {
+      "id": "prompt_pack_technical_visual_direction",
+      "label": "Technical Visual Direction",
+      "degree": 11
+    },
+    {
+      "id": "creative_direction_lock",
+      "label": "Creative Direction Lock",
+      "degree": 8
+    },
+    {
+      "id": "campaign_strategy_lock",
+      "label": "Campaign Strategy Lock",
+      "degree": 6
+    },
+    {
+      "id": "input",
+      "label": "Input",
+      "degree": 6
+    },
+    {
+      "id": "no_people_constraint",
+      "label": "No People Constraint",
+      "degree": 5
+    },
+    {
+      "id": "input_example_product",
+      "label": "Example Product Input",
+      "degree": 4
+    },
+    {
+      "id": "no_hands_constraint",
+      "label": "No Hands Constraint",
+      "degree": 4
+    }
+  ],
+  "surprises": [
+    {
+      "source": "campaign-strategy-lock.md (biona-hypochlorous-spray)",
+      "target": "Campaign Strategy Summary",
+      "source_files": [
+        "product-runs/biona-hypochlorous-spray/campaign-strategy-lock.md",
+        "03_OUTPUT_SCHEMA.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "references",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories"
+    },
+    {
+      "source": "creative-direction-lock.md (biona-hypochlorous-spray)",
+      "target": "Creative Direction Summary",
+      "source_files": [
+        "product-runs/biona-hypochlorous-spray/creative-direction-lock.md",
+        "03_OUTPUT_SCHEMA.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "references",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories"
+    },
+    {
+      "source": "Hallucination Pressure Test",
+      "target": "Prompt Pack",
+      "source_files": [
+        "tests/hallucination-pressure-test.md",
+        "product-runs/hallucination-pressure-test/prompt-pack.md"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "connects across different repos/directories; bridges separate communities"
+    },
+    {
+      "source": "Hallucination Pressure Test",
+      "target": "Review Notes",
+      "source_files": [
+        "tests/hallucination-pressure-test.md",
+        "product-runs/hallucination-pressure-test/review-notes.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "references",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories"
+    },
+    {
+      "source": "Hallucination Pressure Test",
+      "target": "Selected Prompts",
+      "source_files": [
+        "tests/hallucination-pressure-test.md",
+        "product-runs/hallucination-pressure-test/selected-prompts.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "references",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories"
+    }
+  ],
+  "tokens": {
+    "input": 30909,
+    "output": 37593
+  }
+}

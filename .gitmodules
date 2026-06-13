@@ -1,0 +1,6 @@
+[submodule "graphify"]
+	path = graphify
+	url = https://github.com/safishamsi/graphify.git
+[submodule "superpowers"]
+	path = superpowers
+	url = https://github.com/obra/superpowers.git
