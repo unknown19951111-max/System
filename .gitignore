@@ -24,8 +24,12 @@ venv/
 *.swo
 *~
 
-# Claude
+# Claude — ignore by default, but track essential project files
 .claude/
+!.claude/settings.json
+!.claude/skills/
+!.claude/skills/*/
+!.claude/skills/*/SKILL.md
 
 # Cache / build artifacts
 magnific-prompt-engine/graphify-out/cache/
