@@ -2,6 +2,8 @@
 
 This file defines the exact structure of `product-runs/[product-name]/prompt-pack.md`. Every prompt pack must follow this order exactly.
 
+> **Optional companion file:** `product-runs/[product-name]/run-status.md` provides a centralized per-product-run status manifest (DRAFT/TESTED/SELECTED/RETIRED, Magnific test status, review/selection state). See `product-runs/example-product/run-status.md` for the schema template.
+
 ## 1. Prompt Pack Metadata
 
 ```markdown
