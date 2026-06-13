@@ -1,5 +1,8 @@
 # System — Magnific Prompt Engine Workspace
 
+<img width="1448" height="1086" alt="ChatGPT Image Jun 13, 2026, 12_17_45 AM" src="https://github.com/user-attachments/assets/ae1a017e-4502-4b64-b87d-841337e582c0" />
+
+
 [![Status](https://img.shields.io/badge/Status-Active-green)](https://github.com/unknown19951111-max/System)
 [![Model](https://img.shields.io/badge/Model-Nano%20Banana%202%20%2B%20Kling%202.5-blue)](https://magnific.com)
 [![Version](https://img.shields.io/badge/Version-6.6.1-orange)](magnific-prompt-engine/CHANGELOG.md)
