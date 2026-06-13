@@ -84,6 +84,7 @@ magnific-prompt-engine/
 ├── 02_PRODUCT_INPUT_TEMPLATE.md
 ├── 03_OUTPUT_SCHEMA.md
 ├── 04_REVIEW_AND_REVISION.md
+├── 05_ACCEPTANCE_CHECKLIST.md
 ├── .claude/
 │   ├── settings.json
 │   └── skills/
@@ -92,8 +93,6 @@ magnific-prompt-engine/
 │       ├── review-output/SKILL.md
 │       ├── revise-prompt/SKILL.md
 │       └── update-system/SKILL.md
-├── tests/
-│   └── hallucination-pressure-test.md
 └── product-runs/
     └── example-product/
         ├── input.md

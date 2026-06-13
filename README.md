@@ -1,7 +1,7 @@
 # System — Prompt Engine Workspace
 
-A Claude Code workspace containing **magnific-prompt-engine** as the primary
-system, alongside **graphify** and **superpowers** as auxiliary tool submodules.
+A Claude Code workspace containing `magnific-prompt-engine/` as the primary
+local system, with `graphify/` and `superpowers/` mounted as auxiliary git submodules.
 
 ## What's Inside
 

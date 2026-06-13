@@ -349,7 +349,7 @@ Before claiming the system build is complete, verify:
 9. No unsupported model lanes are introduced.
 10. No automation, API, CLI, MCP, Agent integration, or Spaces automation is implemented.
 11. Required campaign, prompt, and review rules are present.
-12. Acceptance checklist has been reviewed.
+12. `05_ACCEPTANCE_CHECKLIST.md` has been reviewed.
 
 Any completion claim must include the verification evidence checked.
 
