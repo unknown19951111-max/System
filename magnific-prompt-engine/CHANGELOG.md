@@ -1,5 +1,27 @@
 # Changelog
 
+## v6.6.2 — 2026-06-12
+
+### Fixed (audit-driven)
+- Troubleshooting table now mentions `.claude/settings.json` and missing SKILL.md as root causes for "Command not found" and "Skill doesn't activate"
+- Acceptance checklist converted from flat checkboxes to `[PASS]`/`[FAIL]` status-prefixed format with protection disclosure
+- Tree Lock no longer claims "exactly this structure" — now "Required minimum structure" with documented approved exceptions (`graphify-out/`, additional product runs, test files)
+- `instructions.md` Rule 00: removed bootstrap "After downloading this file" language — clean file placement rule
+- `instructions.md`: added Superpowers Preflight Rule (submodule check before workflows)
+- Output schema: split single evidence level into Text Evidence Level + Visual Evidence Level with definitions
+- Output schema: added LOW Confidence Text Behavior rule — short anchor only in final prompts, full text reserved for post-processing
+- Output schema: Technical Draft Negative Prompt limited to 15 terms (was unconstrained); Final `--neg` remains 5–10 terms
+- Root README: `/run-product-campaign` now documented as a two-state command (scaffold vs generate)
+- BIONA prompt pack: replaced long exact label text in final LOW-confidence prompts with short anchor text
+- Added `product-runs/example-product/run-status.md` as optional status manifest schema template
+- README and acceptance checklist now include explicit protection disclosure: "policy-enforced by Claude Code instructions and plan mode only"
+
+### Known Unresolved
+- No executable hook guard for protected files (policy-only enforcement — adequate for current use)
+- Product pack evidence levels use single score in generated packs — text/visual split applied to schema but existing packs not retrofitted
+- No `run-status.md` manifests exist for real product runs yet (example-product template added but biona/iphone/hallucination-test not populated)
+- All `review-notes.md` and `selected-prompts.md` files across product runs are empty templates — no Magnific testing completed
+
 ## v6.6.1 — 2026-06-12
 
 ### Fixed

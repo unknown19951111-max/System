@@ -253,13 +253,17 @@ To verify anti-hallucination controls:
 
 This system generates prompts for manual copying into Magnific. It does not guarantee Magnific output quality, model behavior, or campaign results. Generated prompts are never equivalent to approved visuals. Manual review is the final quality gate.
 
+## Protection Model
+
+System files (CLAUDE.md, README.md, instructions.md, numbered system files, `.claude/settings.json`, `.claude/skills/*/SKILL.md`) are **policy-enforced** by Claude Code instructions and plan mode only. No executable hook guard is active in this repo. Users running `/build-system` or `/update-system` may edit system files with approval; product runs must not modify them.
+
 ## Troubleshooting
 
 | Symptom | Likely Cause | Fix |
 |---|---|---|
-| Command not found | Claude Code is not in `magnific-prompt-engine/` | `cd magnific-prompt-engine/` and retry |
+| Command not found | Claude Code not in `magnific-prompt-engine/`, or `.claude/skills/[command]/SKILL.md` missing | `cd magnific-prompt-engine/` and retry; verify `.claude/skills/` exists |
 | "Stop and request missing fields" | `input.md` lacks required fields | Add Product Evidence, Important Restrictions, Output Needed |
-| Skill doesn't activate | Skill file missing or CWD wrong | Check `.claude/skills/` exists in CWD |
+| Skill doesn't activate | Skill file missing, CWD wrong, or `.claude/settings.json` missing | Check `.claude/skills/` exists in CWD; verify `.claude/settings.json` present |
 | `product-runs/[name]` folder not found | Folder doesn't exist yet | Run `/run-product-campaign [name]` first — it creates the folder |
 | Prompt pack shows "DRAFT" status | Pack generated but not tested | This is normal — change to TESTED after Magnific testing |
 | Permission error editing system files | Plan mode is active (default) | Use `/build-system` or `/update-system` for system changes |

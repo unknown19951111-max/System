@@ -59,7 +59,7 @@ flowchart TD
     K -->|Reject| N[Do not reuse prompt]
 ```
 
-**Commands used:** `/run-product-campaign [product-name]` handles validation through prompt-pack generation. `/review-output product-runs/[product-name]` handles the review step. `/revise-prompt product-runs/[product-name]` handles revision prompts.
+**Commands used:** `/run-product-campaign [product-name]` is a two-state command — see Quick Start below. `/review-output product-runs/[product-name]` handles the review step. `/revise-prompt product-runs/[product-name]` handles revision prompts.
 
 ## Quick Start
 

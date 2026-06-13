@@ -24,12 +24,22 @@ Prompt Status: DRAFT / TESTED / SELECTED / RETIRED
 
 ## 2. Product Evidence Level
 
+Evidence is split into two independent dimensions — text/product-page evidence and visual evidence. Visual claims may be asserted only up to the Visual Evidence Level, regardless of the Text Evidence Level.
+
 ```markdown
 # Product Evidence Level
 
-Level: [0 / 1 / 2 / 3]
-Description: [brief rationale]
+Text Evidence Level: [0 / 1 / 2 / 3]
+Visual Evidence Level: [0 / 1 / 2 / 3]
+Description: [brief rationale including what evidence was used and what was inferred]
 ```
+
+### Evidence Level Definitions
+
+- **Level 0**: No evidence available — product details are entirely unknown.
+- **Level 1**: Rough text description only (user description without images or product page).
+- **Level 2**: Product page with brand details (text claims, specs) but no independent visual verification.
+- **Level 3**: Product page with brand and formulation details, plus verified visual reference (product image or video).
 
 ## 3. Verified Product Facts
 
@@ -306,6 +316,8 @@ Every final image prompt MUST be optimized for how diffusion models interpret in
 
 Prompt Quality Status: PASS / NEEDS REVIEW / CONCERN
 Text Confidence: [HIGH / MEDIUM / LOW] — note any text rendering risk
+
+**LOW Confidence Text Behavior:** When Text Confidence is LOW, do not include the full exact label text in the final copy-paste prompt. Use short anchor text (brand name or key anchor word) only and note full-text reproduction as a post-processing requirement in the Text Rendering Strategy field. The exact text may appear in the Technical Draft Prompt and Product Accuracy Lock for reference, but must not be given as a generation target in the final prompt.
 ```
 
 ### Example Final Prompt Structure
@@ -435,7 +447,11 @@ Every final copy-paste prompt MUST include an embedded `--neg` directive with 5-
 
 ### Maximum Negative Token Rule
 
-No single negative prompt (reference or embedded) may exceed 15 comma-separated terms. Prioritize the 5-10 most impactful tokens for each specific asset. Do not create generic mega-lists.
+- **Technical Draft Negative Prompt:** max 15 comma-separated terms.
+- **Final Embedded `--neg`:** 5–10 comma-separated prioritized terms.
+- **Reference negatives** (supplementary, non-embedded): max 15 terms each.
+
+No layer — technical draft, reference, or embedded — may contain generic mega-list negatives (15+ terms). If a technical draft exceeds 15 terms, prune to the most impactful tokens. The per-prompt embedded `--neg` is what the user actually copies; keep reference negatives as documentation only.
 
 ### Per-Prompt Negative Strategy
 

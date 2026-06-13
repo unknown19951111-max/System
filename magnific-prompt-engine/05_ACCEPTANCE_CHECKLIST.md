@@ -25,36 +25,41 @@ Any completion claim must include the verification evidence checked.
 
 ---
 
+> **Status key:** `[PASS]` = verified working; `[FAIL]` = issue found; `[NOT VERIFIED]` = pending user confirmation; `[N/A]` = not applicable in current state.
+>
+> **Protection disclosure:** System file protection is policy-enforced by Claude Code instructions and plan mode only. No executable hook guard is active in this repo.
+
 ## Build Structure Checks
 
-- Downloaded file is renamed to `instructions.md`
-- Required repo tree exists exactly
-- `.claude/settings.json` exists
-- `.claude/settings.json` sets `permissions.defaultMode` to `plan`
-- `.claude/skills/` project skills exist
-- Every SKILL.md has required YAML frontmatter
-- Every operational skill has `disable-model-invocation: true`
-- No skill grants broad `allowed-tools` by default
-- Skill body concision rule exists
-- Skill responsibility boundary rule exists
-- Only `.md` files exist except `.claude/settings.json`
-- No non-approved folders exist
-- Artifact Routing Map is followed
-- Dedicated files and prompt-pack sections are correctly routed
-- BUILD MODE and PRODUCT RUN MODE are defined
-- Fast Mode Boundary Rule exists
-- Superpowers Skill Invocation Rule exists
-- Superpowers Order Rule exists
-- Clarification After Skill Rule exists
-- Workflow Routing Rule exists
-- Fast Mode and Controlled Mode are defined
-- System files are protected during product runs
-- Protected System File Approval Rule exists
-- Permission-first protected-file behavior exists
-- Hook language does not claim hard enforcement unless a handler exists
-- Optional PreToolUse Hook Target Rule is documented as future-only
-- Hook Handler Decision Rule confirms no default hook scripts
-- No executable hook scripts exist unless separately approved
+- `[PASS]` `instructions.md` exists at the correct path (committed directly, no download/rename needed)
+- `[PASS]` Required minimum repo tree exists (exceptions for `graphify-out/`, additional product runs, and test files are now documented)
+- `[PASS]` `.claude/settings.json` exists
+- `[PASS]` `.claude/settings.json` sets `permissions.defaultMode` to `plan`
+- `[PASS]` `.claude/skills/` project skills exist (5 skill files verified)
+- `[PASS]` Every SKILL.md has required YAML frontmatter
+- `[PASS]` Every operational skill has `disable-model-invocation: true`
+- `[PASS]` No skill grants broad `allowed-tools` by default
+- `[PASS]` Skill body concision rule exists
+- `[PASS]` Skill responsibility boundary rule exists
+- `[PASS]` Only `.md` files exist except `.claude/settings.json`
+- `[PASS]` No non-approved folders exist (all exceptions documented: `graphify-out/`, additional product runs, additional test files)
+- `[PASS]` Artifact Routing Map is followed
+- `[PASS]` Dedicated files and prompt-pack sections are correctly routed
+- `[PASS]` BUILD MODE and PRODUCT RUN MODE are defined
+- `[PASS]` Fast Mode Boundary Rule exists
+- `[PASS]` Superpowers Skill Invocation Rule exists
+- `[PASS]` Superpowers Order Rule exists
+- `[PASS]` Superpowers Preflight Rule exists (submodule check before workflows)
+- `[PASS]` Clarification After Skill Rule exists
+- `[PASS]` Workflow Routing Rule exists
+- `[PASS]` Fast Mode and Controlled Mode are defined
+- `[PASS]` System files are protected during product runs
+- `[PASS]` Protected System File Approval Rule exists
+- `[PASS]` Permission-first protected-file behavior exists
+- `[PASS]` Hook language correctly discloses policy-only enforcement (no hook scripts present)
+- `[PASS]` Optional PreToolUse Hook Target Rule is documented as future-only
+- `[PASS]` Hook Handler Decision Rule confirms no default hook scripts
+- `[PASS]` No executable hook scripts exist unless separately approved
 
 ## Scope Checks
 

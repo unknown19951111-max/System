@@ -272,14 +272,14 @@ Quick punchy format. Bottle appears on screen, quick gentle rotation or slight m
 - Quality Anchors: (masterpiece:1.2), (best quality:1.1), (professional commercial product photography:1.3), (ultra detailed:1.1)
 - Integrated Negative (10 terms): distortion, label warp, medical, clinical, people, hands, dark, warm, clutter, fake text
 - Aspect Ratio Param: [aspect: 4:5]
-- Text Rendering Strategy: Use anchor text "BIONA Pure Hypochlorous Acid Spray" only. Post-process for exact label reproduction.
+- Text Rendering Strategy: Use short anchor text "BIONA" only. Post-process for exact label reproduction.
 
 #### Final Copy-Paste Prompt
 
 (masterpiece:1.2), (best quality:1.1), (professional commercial product photography:1.3),
 (ultra detailed:1.1), a tall white cylindrical (facial spray bottle:1.2) with (spray nozzle:1.1),
 standing on a clean white surface, (soft diffused bright studio lighting:1.3),
-(85mm lens look:1.1), (shallow depth of field:1.2), the white label shows "BIONA Pure Hypochlorous Acid Spray 0.018%",
+(85mm lens look:1.1), (shallow depth of field:1.2), the white label shows short brand anchor text "BIONA Pure Hypochlorous Acid",
 (sharp focus:1.1), (matte finish:1.1), clean skincare aesthetic, slight three-quarter angle
 --neg distortion, label warp, medical, clinical, people, hands, dark, warm, clutter, fake text
 [aspect: 4:5]
@@ -372,14 +372,14 @@ Text Confidence: MEDIUM
 - Quality Anchors: (best quality:1.2), (professional e-commerce photography:1.3), (ultra detailed:1.2), (sharp focus:1.2)
 - Integrated Negative (10 terms): shadow, gradient, colored bg, props, people, text overlay, badge, price, warm, clutter
 - Aspect Ratio Param: [aspect: 1:1]
-- Text Rendering Strategy: Anchor text only: "BIONA Pure Hypochlorous Acid Spray". Full label text requires post-processing for Amazon accuracy.
+- Text Rendering Strategy: Short anchor text only: "BIONA". Full label text requires post-processing for Amazon accuracy.
 
 #### Final Copy-Paste Prompt
 
 (best quality:1.2), (professional e-commerce photography:1.3), (ultra detailed:1.2),
 (sharp focus:1.2), a tall white cylindrical (facial spray bottle:1.2) with (spray nozzle:1.1),
 centered on a pure white seamless background, straight-on front view,
-(bright even studio lighting:1.3), the label shows "BIONA Pure Hypochlorous Acid Spray",
+(bright even studio lighting:1.3), the label shows short brand anchor text "BIONA",
 (deep focus:1.1), (clean product photography:1.1), symmetrical, vertical
 --neg shadow, gradient, colored bg, props, people, text overlay, badge, price, warm, clutter
 [aspect: 1:1]

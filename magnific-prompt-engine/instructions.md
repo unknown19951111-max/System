@@ -4,25 +4,13 @@
 
 ## 00. File Placement Rule
 
-After downloading this file, rename it to:
-
-```text
-instructions.md
-```
-
-Then place it at:
+This file must exist at:
 
 ```text
 magnific-prompt-engine/instructions.md
 ```
 
-Claude Code must read the root file named exactly:
-
-```text
-instructions.md
-```
-
-Do not keep this file under a versioned filename inside the project root unless the user explicitly approves a version archive.
+Do not duplicate, rename, or archive alternate instruction files inside the active project unless explicitly approved.
 
 ---
 
@@ -83,6 +71,16 @@ Superpowers is already installed in Claude Code before this project begins.
 Do not spend time installing, configuring, debugging, or verifying Superpowers unless the user explicitly asks.
 
 Use Superpowers only as the build methodology for this project.
+
+### Superpowers Preflight Rule
+
+Before invoking Superpowers-dependent workflows, check whether the `superpowers/` submodule directory exists and is non-empty. If not initialized, stop and instruct the user to run:
+
+```bash
+git submodule update --init --recursive
+```
+
+Do not debug Superpowers internals unless explicitly asked.
 
 ---
 
@@ -858,7 +856,7 @@ If code seems useful, propose it separately and wait for approval.
 
 ## 25. Repo Tree Lock
 
-Create exactly this structure:
+Required minimum structure:
 
 ```text
 magnific-prompt-engine/
@@ -898,7 +896,16 @@ magnific-prompt-engine/
         └── selected-prompts.md
 ```
 
-No other files or folders without user approval.
+### Approved Exceptions
+
+The following are approved and may exist outside the minimum structure:
+
+- `graphify-out/` — generated graph analysis output
+- `product-runs/[any-product-name]/` — real product runs
+- `tests/` — additional test files as needed
+- Various supporting product-run files (e.g., `brand-voice.md`, `target-audience-profiles.md`)
+
+No other files or folders outside these approved categories without user approval.
 
 ---
 
