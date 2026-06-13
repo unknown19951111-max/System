@@ -218,7 +218,7 @@ Every prompt pack and `run-status.md` file uses one of these statuses:
 | Magnific output has wrong details | Prompt references unverified claims | Add missing evidence to `input.md` and regenerate |
 | Magnific output has bad visual quality | Model behavior, not a prompt issue | Revise prompt with specific failure type via `/revise-prompt`; or adjust Magnific settings |
 | Label text renders incorrectly | Magnific model text rendering behavior | Add text-anchoring instructions to the prompt; or render text as post-processing |
-| User accidentally edits system files | Opened system file during product run | Discard changes — system files are regeneratable from git. Use `/update-system` for intentional changes |
+| User accidentally edits system files | Opened system file during product run | Discard changes — system files can be regenerated from git. Use `/update-system` for intentional changes |
 | Prompt question: "Does this generate images?" | User assumes this repo is an image generator | See "What This Is Not" above — manual Magnific only |
 
 ---

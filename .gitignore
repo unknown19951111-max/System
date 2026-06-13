@@ -34,3 +34,7 @@ venv/
 # Cache / build artifacts
 magnific-prompt-engine/graphify-out/cache/
 magnific-prompt-engine/graphify-out/graph.html
+magnific-prompt-engine/graphify-out/*.json
+magnific-prompt-engine/graphify-out/*.md
+magnific-prompt-engine/graphify-out/manifest.json
+magnific-prompt-engine/graphify-out/20*/

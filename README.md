@@ -5,7 +5,7 @@
 
 [![Status](https://img.shields.io/badge/Status-Active-green)](https://github.com/unknown19951111-max/System)
 [![Model](https://img.shields.io/badge/Model-Nano%20Banana%202%20%2B%20Kling%202.5-blue)](https://magnific.com)
-[![Version](https://img.shields.io/badge/Version-6.6.1-orange)](magnific-prompt-engine/CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-6.6.2-orange)](magnific-prompt-engine/CHANGELOG.md)
 
 A workspace for building prompt packs for manual use in Magnific. The primary system is `magnific-prompt-engine/`.
 
@@ -45,10 +45,12 @@ Then in Claude Code:
 ## Commands
 
 | Command | Purpose |
-|---|---|
+|---|---|---|
 | `/run-product-campaign [name]` | Generate prompt pack from your product facts |
 | `/review-output product-runs/[name]` | Record Magnific output reviews |
 | `/revise-prompt product-runs/[name]` | Targeted prompt revision for documented failures |
+| `/build-system [--check]` | System creation or health check (maintainer) |
+| `/update-system` | Audit and patch system files after verified issues (maintainer) |
 
 ---
 

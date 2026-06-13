@@ -1,6 +1,4 @@
-# instructions.md
-
-# Magnific Prompt Engine v6.6.1 — Stale Wiring Cleanup + Schema Consistency Patch
+# Build Contract — Magnific Prompt Engine v6.6.2
 
 ## 00. File Placement Rule
 
@@ -868,6 +866,8 @@ magnific-prompt-engine/
 ├── 02_PRODUCT_INPUT_TEMPLATE.md
 ├── 03_OUTPUT_SCHEMA.md
 ├── 04_REVIEW_AND_REVISION.md
+├── 05_ACCEPTANCE_CHECKLIST.md
+├── CHANGELOG.md
 │
 ├── .claude/
 │   ├── settings.json
@@ -893,6 +893,7 @@ magnific-prompt-engine/
         ├── creative-direction-lock.md
         ├── prompt-pack.md
         ├── review-notes.md
+        ├── run-status.md
         └── selected-prompts.md
 ```
 
@@ -2020,7 +2021,7 @@ Every Kling 2.5 video prompt must use three layers:
 2. Model Optimization Layer
 3. Final Copy-Paste Prompt
 
-### Technical Draft Prompt Must Include
+### Video Technical Draft Prompt Must Include
 
 1. Product Identity
 2. Product Accuracy Lock
@@ -2044,7 +2045,7 @@ Every Kling 2.5 video prompt must use three layers:
 20. Negative Prompt
 21. Prompt Priority Stack
 
-### Model Optimization Layer Must Include
+### Video Model Optimization Layer Must Include
 
 - Duration Class (SHORT / MEDIUM / LONG) — determines segment count and camera complexity
 - Temporal Segments — each marked with `[t_start-t_end: description]`
@@ -2052,7 +2053,7 @@ Every Kling 2.5 video prompt must use three layers:
 - Motion Weighting — weight critical motion descriptors
 - Integrated Negative (5-10 terms, max 15)
 
-### Final Copy-Paste Prompt
+### Video Final Copy-Paste Prompt
 
 The final prompt must include:
 - Motion quality tokens at start: `(motion_smooth:1.4)`, `(stable_product:1.5)`
@@ -2708,27 +2709,27 @@ Prompt Name:
 Output ID / Screenshot Reference:
 Decision: APPROVE / REVISE / REJECT
 
-## Product Accuracy
+Product Accuracy
 Shape:
 Color:
 Logo/Label:
 Packaging:
 Text:
 
-## Campaign Fit
+Campaign Fit
 Matches Campaign Strategy Lock:
 Matches Creative Direction Lock:
 Matches Asset Role:
 Platform Usable:
 
-## Visual Claim Safety
+Visual Claim Safety
 Does the output imply unverified certification?
 Does the output imply medical/scientific validation?
 Does the output imply sustainability?
 Does the output imply customer review/testimonial?
 Does the output imply performance results?
 
-## Failure Type
+Failure Type
 - Product distortion
 - Logo/label issue
 - Fake text
@@ -2745,13 +2746,13 @@ Does the output imply performance results?
 - Continuity failure
 - Other
 
-## Revision Prompt Log
+Revision Prompt Log
 Prompt Name:
 Failure Type:
 Revision Prompt:
 Result:
 
-## Next Action
+Next Action
 Approve:
 Revise With Prompt:
 Reject:

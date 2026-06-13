@@ -4,7 +4,8 @@
 
 This repo is a **workspace** that groups multiple projects.
 **magnific-prompt-engine/** is the primary system. graphify/ and superpowers/
-are git submodules with their own rules.
+are git submodules — superpowers/ has its own project rules (CLAUDE.md),
+graphify/ is a Python utility submodule.
 
 ## Rules
 
